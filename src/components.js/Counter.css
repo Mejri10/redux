@@ -1,0 +1,36 @@
+body{
+    display: flex;
+    justify-content: center;
+
+}
+
+.counter {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(82, 82, 221);
+    width: 400px;
+    border-radius: 30px;
+    margin-top: 50px;
+
+}
+h2{
+
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 30px;
+}
+
+i {
+    cursor: pointer;
+    font-size: 30px;
+    color: rgb(20, 85, 146);
+  }
+
+  .hhh {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    width: 100px;
+    justify-content: space-between
+     
+  };

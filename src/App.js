@@ -1,26 +1,30 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Counter from "./components.js/Counter";
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware  } from "redux";
+import reducer from "./reducer";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const logger = store => next => action => {
+  console.log('dispatching', action)
+  let result = next(action)
+  console.log('next state', store.getState())
+  return result
+ }
+
+
+
+const store = createStore(reducer, applyMiddleware(logger));
+ store.dispatch({ type: "INCREMENT" });
+ store.dispatch({ type: "INCREMENT" });
+ store.dispatch({ type: "DECREMENT" });
+ store.dispatch({ type: "RESET" });
+
+
+const App = () => (
+  <Provider store={store}>
+    <Counter />
+  </Provider>
+);
 
 export default App;
